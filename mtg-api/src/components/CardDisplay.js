@@ -18,7 +18,7 @@ const CardDisplay = props => {
             <div>
                 {props.setData.sets.map(set => {
                     return (
-                        <Card set={set} />
+                        <Card key={set.code} set={set} />
                     )
                 })}
                 <p>test</p>
