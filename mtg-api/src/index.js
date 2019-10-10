@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 
@@ -13,5 +14,7 @@ const store = createStore(reducer, applyMiddleware(thunk))
 
 render(
     <Provider store={store}>
-        <App />
+        <Router>
+            <App />
+        </Router>
     </Provider>, document.getElementById('root'));

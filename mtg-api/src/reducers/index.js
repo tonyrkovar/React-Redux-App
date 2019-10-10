@@ -1,11 +1,15 @@
 import {
     START_FETCHING,
     FETCH_SUCCESS,
-    FETCH_FAILURE
+    FETCH_FAILURE,
+    START_FETCHING_KTK,
+    FETCH_SUCCESS_KTK,
+    FETCH_FAILURE_KTK,
 } from '../actions'
 
 const initialState = {
     setData: [],
+    ktkData: [],
     isFetching: true,
     error: ''
 }
@@ -26,6 +30,25 @@ export const reducer = (state = initialState, action) => {
                 setData: action.payload
             }
         case FETCH_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        case START_FETCHING_KTK:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case FETCH_SUCCESS_KTK:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                ktkData: action.payload
+            }
+        case FETCH_FAILURE_KTK:
             return {
                 ...state,
                 error: action.payload,

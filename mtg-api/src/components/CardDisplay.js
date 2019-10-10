@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector, shallowEqual } from 'react-redux';
 
 import { Card } from './Card'
 
 import { fetchSets } from '../actions'
 
 const CardDisplay = props => {
-    console.log('props in card display', props)
+    const dataSelector = useSelector(state => state.setData, shallowEqual)
+    const selectLoading = useSelector(state => state.isFetching)
+    console.log('props in card display', dataSelector)
     useEffect(() => {
         props.fetchSets();
     }, [])
 
-    if (props.isFetching) {
+    if (selectLoading) {
         return <h2> LOADING</h2>
     } else {
         return (
             <div>
-                {props.setData.sets.map(set => {
+                {dataSelector.sets.map(set => {
                     return (
                         <Card key={set.code} set={set} />
                     )
@@ -28,11 +30,7 @@ const CardDisplay = props => {
 }
 
 const mapStateToProps = state => {
-    // console.log('MSTP state', state)
     return {
-        setData: state.setData,
-        isFetching: state.isFetching,
-        error: state.error
     }
 }
 
