@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "name": "mtg-api",
+    "builds": [
+        {
+            "src": "mtg-api/package.json",
+            "use": "@now/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "mtg-api/$1"
+        }
+    ]
+}

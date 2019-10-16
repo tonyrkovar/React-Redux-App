@@ -18,10 +18,21 @@ export const fetchSets = () => dispatch => {
 
 export const fetchSetCards = () => dispatch => {
     dispatch({ type: START_FETCHING_KTK });
+    console.log('KTK AXIOS')
     axios
         .get('https://api.magicthegathering.io/v1/cards')
         .then(res => {
+            console.log('cards RES', res);
             dispatch({ type: FETCH_SUCCESS_KTK, payload: res.data })
         })
         .catch(err => dispatch({ type: FETCH_FAILURE_KTK, payload: err.response }))
 }
+
+// export const callSet = props => dispatch => {
+//     dispatch({ type: START_FETCHING });
+//     axios
+//         .get('https://api.magicthegathering.io/v1/sets/${props.key}')
+//         .then(res =>
+//             dispatch({ type: FETCH_SUCCESS, payload: res.data }))
+//         .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response }))
+// }
