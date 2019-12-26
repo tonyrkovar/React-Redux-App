@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import CardDisplay from "./components/CardDisplay";
 import SetCardsDisplay from "./components/SetCardsDisplay";
-import setDisplay from "./components/setDisplay";
+import SetDisplay from "./components/setDisplay";
 
 import "./App.css";
 
@@ -14,7 +14,7 @@ function App() {
 			<Router>
 				<Route exact path="/" component={CardDisplay} />
 				<Route path="/ktk" component={SetCardsDisplay} />
-				<Route path="/set/:code" component={setDisplay} />
+				<Route path="/set/:code" component={SetDisplay} />
 			</Router>
 		</div>
 	);

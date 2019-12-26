@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect, useSelector, shallowEqual } from "react-redux";
+import { connect, useSelector, shallowEqual, useDispatch } from "react-redux";
 
 import { Card } from "./Card";
 
@@ -8,9 +8,10 @@ import { fetchSets } from "../actions";
 const CardDisplay = props => {
 	const dataSelector = useSelector(state => state.setData, shallowEqual);
 	const selectLoading = useSelector(state => state.isFetching);
+	const dispatch = useDispatch();
 	console.log("props in card display", dataSelector);
 	useEffect(() => {
-		props.fetchSets();
+		dispatch(fetchSets());
 	}, []);
 
 	if (selectLoading) {

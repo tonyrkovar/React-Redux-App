@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { callSet } from "../actions";
+import { specificSet } from "../actions";
 
 export const Card = ({ set }) => {
 	const dispatch = useDispatch();
@@ -17,7 +17,10 @@ export const Card = ({ set }) => {
 			<p>Release Date: {set.releaseDate}</p>
 			<p>Release Type: {set.type}</p>
 			<Link to={`/set/${set.code}`}>
-				<button onClick={() => dispatch(callSet)}> View {set.name}</button>
+				<button onClick={() => dispatch(specificSet(set.code))}>
+					{" "}
+					View {set.name}
+				</button>
 			</Link>
 		</div>
 	);
