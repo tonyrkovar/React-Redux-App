@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { specificSet } from "../actions";
-import { Card } from "./Card";
-import ktkImage from "./ktkImage";
 
 const SetDisplay = props => {
 	const setSelector = useSelector(state => state.specificSet);
